@@ -4370,3 +4370,13 @@ html[dir="rtl"] .scrollToTop, html[dir="rtl"] .whatsappButton {
   right: auto;
   left: 15px; }
 
+.navbar-brand img {
+  height: 120px;   /* menü yüksekliğine göre ayarla */
+  width: 200px;    /* orantılı küçülsün */
+  object-fit: contain;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center; /* dikey ortalama */
+  padding: 0;          /* gereksiz boşluğu kaldır */
+}
