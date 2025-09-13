@@ -3661,9 +3661,11 @@ input:focus, textarea:focus, select:focus, button:focus, .btn:focus {
     width: 98%; }
   /* Navbar for small devices */
   .navbar-header {
-    float: none;
-    padding-left: 15px;
-    padding-right: 15px; }
+    width: 100%;
+    display: flex  ;
+    float: left;
+    padding-left: 0px;
+    padding-right: 5px; }
   .navbar-toggle {
     display: block;
     margin-right: -15px; }
@@ -4377,6 +4379,20 @@ html[dir="rtl"] .scrollToTop, html[dir="rtl"] .whatsappButton {
 }
 .navbar-brand {
   display: flex;
-  align-items: center; /* dikey ortalama */
-  padding: 0;          /* gereksiz boşluğu kaldır */
+  align-items: center;    /* dikey ortalama */
+  justify-content: center; /* yatay ortalama */
+  padding: 0;
+  width: 100%;            /* tüm navbar alanını kaplasın */
 }
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: left; /* Logo sola, menü ortaya */
+}
+
+.navbar-nav {
+  justify-content: left; /* menü sola kayar */
+  margin-left: 0px; /* logodan biraz boşluk */
+}
+
