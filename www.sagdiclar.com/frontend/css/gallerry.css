@@ -72,86 +72,87 @@
 
 
 /* ====== Hizmet Şeridi — ortalı, yuvarlak köşeli, hover'lı ====== */
+/* ================================
+   SERVICES — Clean, no panel
+   ================================ */
 :root{
-  --service-bg: #0a72b7;
-  --service-bg-dark: #095fa0;
-  --service-text: #ffffff;
-  --service-text-soft: rgba(255,255,255,.9);
-  --service-divider: rgba(255,255,255,.22);
-  --service-shadow: 0 12px 30px rgba(10,114,183,.25);
+  --service-bg: transparent;             /* Panel yok */
+  --service-bg-dark: #095fa0;            /* İkon baloncuğu */
+  --service-text: #044A67;               /* Başlık rengi */
+  --service-text-soft: rgba(4,74,103,.85);/* Açıklama rengi */
+  --service-divider: rgba(4,74,103,.22);  /* (kullanılmıyor ama dursun) */
+  --service-shadow: none;                 /* Panel gölgesi yok */
 }
 
-/* Önceki full-width hackleri sıfırla */
+/* Dış çerçeve */
 .service-layout1{
   width: auto;
   margin: 0;
   padding: 0;
-  margin-bottom: 56px;         /* alttaki gallery ile mesafe */
+  margin-bottom: 56px;                    /* alttaki blokla nefes */
 }
-
 .service-layout1 .container{
-  /* Bootstrap default kalsın; sadece küçük bir yanal nefes */
   padding-left: 16px;
   padding-right: 16px;
   background: transparent;
 }
 
-/* Mavi panel */
+/* İç alan: panel/gölge/doku yok */
 .service-layout1 .service-inner{
-  background: var(--service-bg);
+  background: transparent;
   color: var(--service-text);
-  border-radius: 22px;         /* SS’teki yumuşak köşe */
-  padding: 28px 26px;          /* dikey olarak biraz yüksek */
-  box-shadow: var(--service-shadow);
+  border-radius: 22px;
+  padding: 28px 26px;
+  box-shadow: none;
   overflow: hidden;
   position: relative;
 }
+.service-layout1 .service-inner::after{ display:none; }
 
-/* Hafif doku — SS’teki desen hissi */
-.service-layout1 .service-inner::after{
-  content:"";
-  position:absolute; inset:0;
-  pointer-events:none;
-  background:
-    radial-gradient(transparent 68%, rgba(255,255,255,.05) 70%) 0 0/22px 22px,
-    radial-gradient(transparent 68%, rgba(255,255,255,.04) 70%) 11px 11px/22px 22px;
-  opacity:.18;
-}
+/* Grid aralığı sıfır (mevcutsa) */
+.service-layout1 .row.gx-0{ --bs-gutter-x: 0; }
 
-/* Kolonlar arası ince çizgi (üst-alt boşlukla, köşelere taşmıyor) */
+/* ================================
+   Card (column) + Divider OFF
+   ================================ */
 .service-style3{ position: relative; }
+
+/* Masaüstünde aradaki çizgileri tamamen kapat */
 @media (min-width: 992px){
+  .service-style3::after,
   .service-style3:not(:last-child)::after{
-    content:"";
-    position:absolute; right:0; top:10px; bottom:10px;
-    width:1px; background: var(--service-divider);
+    display: none !important;
+    content: none !important;
   }
 }
 
-/* Kart içi */
+/* ================================
+   Content box — hover sadece yazı alanında
+   ================================ */
 .service-style3 .service-content{
   position: relative;
   background: transparent;
-  padding: 16px 22px 18px;
-  min-height: 190px;           /* tok ama kısa */
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: inline-block;                  /* kutuyu içeriğin genişliğine daralt */
+  width: auto;
+  max-width: 560px;                       /* çok açılmasın; ihtiyaca göre düşürebilirsin */
+  padding: 18px 22px;                     /* nefes */
   border: 0;
-  border-radius: 16px;         /* hover bg olunca kenar yumuşasın */
+  border-radius: 16px;
+  min-height: auto;                       /* sabit yükseklik yok */
+  box-shadow: none;
   transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease;
   will-change: transform;
   cursor: default;
 }
-
-/* Hover efekti */
 .service-style3 .service-content:hover{
-  background: rgba(255,255,255,.06);      /* hafif parıltı */
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(0,0,0,.12);
+  background: rgba(4,74,103,.06);         /* #044A67’nin çok hafif tonu */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(4,74,103,.12);
 }
 
-/* İkon */
+/* ================================
+   Icon bubble
+   ================================ */
 .icon-btn3 .icon{
   width: 64px; height: 64px;
   border-radius: 50%;
@@ -163,15 +164,17 @@
 }
 .icon-btn3 img{
   max-width: 34px; max-height: 34px;
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);        /* beyaz ikon */
   opacity: .95;
 }
 .service-style3 .service-content:hover .icon-btn3 .icon{
   transform: scale(1.06);
-  box-shadow: inset 0 0 0 3px rgba(255,255,255,.16);
+  box-shadow: inset 0 0 0 3px rgba(4,74,103,.16);
 }
 
-/* Başlık & metin */
+/* ================================
+   Typography
+   ================================ */
 .service-title,
 .service-title a{
   color: var(--service-text);
@@ -181,26 +184,26 @@
   margin: 0;
   font-size: clamp(20px, 1.4vw + 12px, 28px);
 }
+.service-title a{ display:inline-block; }
+
 .service-text{
   color: var(--service-text-soft);
   margin: 0;
   font-size: 14px;
   line-height: 1.55;
 }
-.service-title a{ display:inline-block; }
 
-/* Şekil görselleri kapat */
-.service-content .shape-mockup{ display: none !important; }
-
-/* Grid aralığı sıfır */
-.service-layout1 .row.gx-0{ --bs-gutter-x: 0; }
-
-/* Mobil uyum: alt alta + aralarında nefes */
+/* ================================
+   Mobile tweaks
+   ================================ */
 @media (max-width: 991.98px){
   .service-style3{ margin-bottom: 18px; }
   .service-style3 .service-content{
-    min-height: auto;
+    display: block;                       /* mobilde satırı kaplasın */
+    max-width: 100%;
     padding: 18px 20px;
   }
   .icon-btn3 .icon{ width: 58px; height: 58px; }
 }
+
+
