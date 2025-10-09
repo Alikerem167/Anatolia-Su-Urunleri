@@ -4443,3 +4443,36 @@ html[dir="rtl"] .scrollToTop, html[dir="rtl"] .whatsappButton {
   }
 }
 
+/* ==== Mobilde slider yatay geniş banner gibi olsun ==== */
+@media (max-width: 768px) {
+  .bg-slider-wrapper {
+    position: relative;
+    top: 0;
+    height: 55vw;           /* ekran genişliğinin %55'i kadar yükseklik (yatay görünüm) */
+    min-height: 220px;      /* dikey telefonda minimum sınır */
+    max-height: 320px;      /* çok büyümesin */
+    overflow: hidden;
+  }
+
+  .bg-slider-wrapper .flexslider,
+  .bg-slider-wrapper #carousel-example-generic,
+  .bg-slider-wrapper .carousel-inner,
+  .bg-slider-wrapper .item {
+    height: 100%;
+  }
+
+  .bg-slider-wrapper img.mobil-slider {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* taşımaz, kırpar, profesyonel görünüm */
+    object-position: center center; /* ortalansın */
+    display: block;
+  }
+
+  /* Slider oklarını ortala */
+  .carousel-control.left,
+  .carousel-control.right {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

@@ -206,4 +206,59 @@
   .icon-btn3 .icon{ width: 58px; height: 58px; }
 }
 
+ /* 1) Şişiren shape'i akıştan çıkar */
+.service-content {
+  position: relative;            /* shape için referans */
+}
+.service-content .shape-mockup {
+  position: absolute !important; /* artık yer kaplamaz */
+  top: 0; right: 0;              /* inline style ile aynı mantık */
+  pointer-events: none;
+  z-index: 0;
+}
+.service-content .shape-mockup img { 
+  display: block; 
+  max-width: 120px;              /* istersen 0 da yapabilirsin */
+  height: auto;
+  opacity: .08;                  /* dekoratif; görünürlük */
+}
 
+/* 2) Bölümün dikey nefesini azalt */
+.service-layout1 { 
+  margin-bottom: 64px;           /* 56px → 24px */
+}
+.service-layout1 .service-inner { 
+  padding: 12px 14px;            /* 28px 26px → 12px 14px */
+}
+.service-layout1 .container { 
+  padding-top: 0; 
+  padding-bottom: 0;
+}
+
+/* 3) Kart içi boşlukları kıs */
+.service-style3 .service-content {
+  padding: 12px 14px;            /* 18px 22px → 12px 14px */
+  box-shadow: none;
+}
+
+/* 4) Tipografi margin’lerini sık */
+.service-title { 
+  margin: 4px 0 6px;             /* üst-alt boşluk azalsın */
+}
+.service-text { 
+  margin: 0; 
+  line-height: 1.45;
+}
+
+/* 5) İkon baloncuğu da biraz küçülsün */
+.icon-btn3 .icon { 
+  width: 56px; height: 56px;     /* 64 → 56 */
+  margin-bottom: 8px;
+}
+
+/* 6) Mobilde daha da kompakt */
+@media (max-width: 991.98px){
+  .service-style3 { margin-bottom: 12px; }
+  .service-style3 .service-content { padding: 10px 12px; }
+  .icon-btn3 .icon { width: 52px; height: 52px; }
+}
