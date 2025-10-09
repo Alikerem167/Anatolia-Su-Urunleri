@@ -4443,36 +4443,55 @@ html[dir="rtl"] .scrollToTop, html[dir="rtl"] .whatsappButton {
   }
 }
 
-/* ==== Mobilde slider yatay geniş banner gibi olsun ==== */
+/* ==== Mobilde slider tam kenarlara otursun ==== */
 @media (max-width: 768px) {
+  header.intro-slider,
   .bg-slider-wrapper {
     position: relative;
-    top: 0;
-    height: 55vw;           /* ekran genişliğinin %55'i kadar yükseklik (yatay görünüm) */
-    min-height: 220px;      /* dikey telefonda minimum sınır */
-    max-height: 320px;      /* çok büyümesin */
+    top: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw;             /* ekranın tamamını kapla */
+    left: 50%;
+    transform: translateX(-50%); /* olası container ortalamasını sıfırla */
+    height: 65vw;             /* geniş ama yatay görünüm */
+    min-height: 260px;
+    max-height: 380px;
     overflow: hidden;
+    border-radius: 0;         /* köşeler sıfır */
   }
 
+  /* Slider içeriği de aynı hizaya gelsin */
   .bg-slider-wrapper .flexslider,
   .bg-slider-wrapper #carousel-example-generic,
   .bg-slider-wrapper .carousel-inner,
   .bg-slider-wrapper .item {
     height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
+  /* Görseller tam ekrana otursun */
   .bg-slider-wrapper img.mobil-slider {
     width: 100%;
     height: 100%;
-    object-fit: cover;       /* taşımaz, kırpar, profesyonel görünüm */
-    object-position: center center; /* ortalansın */
+    object-fit: cover;         /* kırpmadan doldur */
+    object-position: center top; /* üstten biraz daha alan ver */
     display: block;
   }
 
-  /* Slider oklarını ortala */
+  /* Okları ortala */
   .carousel-control.left,
   .carousel-control.right {
     top: 50%;
     transform: translateY(-50%);
+    bottom: auto;
+  }
+
+  /* Navbar sabitse (fixed-top) sliderın arkasına girmesin */
+  body {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 }
